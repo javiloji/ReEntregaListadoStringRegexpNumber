@@ -225,25 +225,25 @@
         function direccionIp(cadena){
             try {
                 
-                let expresion = new RegExp("^(([0-9]{1,3})[.]){3}[0-9]{1,3}$");
+                let expresion = new RegExp("^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$");
 
-                let [, , numero] = expresion.exec(cadena);
+                let [, numero1, numero2, numero3, numero4] = expresion.exec(cadena);
 
-                if(numero<10 && numero>0 && numero.includes("0")){
-                    cadena = cadena.replace(numero,numero.replace("0",""));
-                }
+                // if(numero1<10 && numero1>0 && numero1.includes("0")){
+                //     cadena = cadena.replace(numero,numero.replace("0",""));
+                // }
 
-                if(expresion.test(cadena.trim())){
+                if(expresion.test(cadena.trim()) && parseInt(numero1)<256 && parseInt(numero2)<"256" && parseInt(numero3)<"256" && parseInt(numero4)<"256"){
                     inputDireccionIp.nextSibling.style.color = "black";
                     inputDireccionIp.nextSibling.innerHTML = "Dirección Ip Correcta";
                 }else{
-                    inputDireccionIp.nextSibling.style.color = "black";
-                    inputDireccionIp.nextSibling.innerHTML = "Dirección Ip inCorrecta";
+                    inputDireccionIp.nextSibling.style.color = "red";
+                    inputDireccionIp.nextSibling.innerHTML = "Dirección Ip No Válida";
                 }
 
             } catch{
-                inputDireccionIp.nextSibling.style.color = "black";
-                inputDireccionIp.nextSibling.innerHTML = "Dirección cdcd inCorrecta";
+                inputDireccionIp.nextSibling.style.color = "red";
+                inputDireccionIp.nextSibling.innerHTML = "Formato De dirección Ip Erróneo";
             }
         }
 
