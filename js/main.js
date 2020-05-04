@@ -20,7 +20,7 @@
         let inputMatricula = document.getElementById("matricula");
         let inputCodigoPostal = document.getElementById("codigoPostal");
         let inputDireccionMac = document.getElementById("direccionMac");
-        let inputDireccionIp = document.getElementById("direccionIp");
+         inputDireccionIp = document.getElementById("direccionIp");
 
 
 
@@ -138,16 +138,13 @@
                 console.log(dniNumero);
                 console.log(dniLetra);
 
-                if (expresion.test(cadena.trim()) && (dniLetra.toUpperCase() == cadenaLetras[parseInt(dniNumero) % 23])) {
-                    inputDni.nextSibling.style.color = "black";
-                    inputDni.nextSibling.innerHTML = "Dni Correcto";
+                if (expresion.test(cadena) && (dniLetra.toUpperCase() == cadenaLetras[parseInt(dniNumero) % 23])) {
+                    inputDni.nextSibling.innerHTML = "";
                 }
                 else {
-                    inputDni.nextSibling.style.color = "red";
                     inputDni.nextSibling.innerHTML = "La letra introducida no es correcta";
                 }
             } catch{
-                inputDni.nextSibling.style.color = "red";
                 inputDni.nextSibling.innerHTML = "Formato de dni inválido, 'xxxxxxxxZ o xxxxxxxx-Z'";
             }
         }
@@ -157,7 +154,7 @@
                 
                 let expresion = new RegExp("^[0-9]{4}[-]?[a-zA-Z]{3}$")
 
-                if(expresion.test(cadena.trim()) 
+                if(expresion.test(cadena) 
                 && !cadena.includes("ñ") && !cadena.includes("Ñ")
                 && !cadena.includes("q") && !cadena.includes("Q")
                 && !cadena.includes("a") && !cadena.includes("A")
@@ -166,16 +163,13 @@
                 && !cadena.includes("o") && !cadena.includes("O")
                 && !cadena.includes("u") && !cadena.includes("U")){
 
-                    inputMatricula.nextSibling.style.color = "black";
-                    inputMatricula.nextSibling.innerHTML = "Matricula Correcta";
+                    inputMatricula.nextSibling.innerHTML = "";
 
                 }else{
-                    inputMatricula.nextSibling.style.color = "red";
                     inputMatricula.nextSibling.innerHTML = "Formato de matricula inválido, 'xxxxZZZ o xxxx-ZZZ'";
                 }
 
             } catch{
-                inputMatricula.nextSibling.style.color = "red";
                 inputMatricula.nextSibling.innerHTML = "Matricula inválida";
             }
         }
@@ -188,17 +182,13 @@
 
                 let [,provincia,barrio] = expresion.exec(cadena);
 
-                if(expresion.test(cadena.trim()) && provincia>"00" && provincia<"53" && barrio!="000"){
-                    inputCodigoPostal.nextSibling.style.color = "black";
-                    inputCodigoPostal.nextSibling.innerHTML = "Código Postal Correcto";
+                if(expresion.test(cadena) && provincia>"00" && provincia<"53" && barrio!="000"){
+                    inputCodigoPostal.nextSibling.innerHTML = "";
                 }else{
-                    inputCodigoPostal.nextSibling.style.color = "red";
                     inputCodigoPostal.nextSibling.innerHTML = "Código Postal no Válido";
                 }
 
-
             } catch{
-                inputCodigoPostal.nextSibling.style.color = "red";
                 inputCodigoPostal.nextSibling.innerHTML = "Formado de Código Postal inválido, 'xxxxx'";
             }
             
@@ -209,46 +199,30 @@
                 
                 let expresion = new RegExp("^([0-9a-zA-Z]{2}[.:]?){5}[0-9a-zA-Z]{2}$")
 
-                if(expresion.test(cadena.trim())){
-                    inputDireccionMac.nextSibling.style.color = "black";
-                    inputDireccionMac.nextSibling.innerHTML = "Dirección Mac Correcta";
+                if(expresion.test(cadena)){
+                    inputDireccionMac.nextSibling.innerHTML = "";
                 }else{
-                    inputDireccionMac.nextSibling.style.color = "red";
                     inputDireccionMac.nextSibling.innerHTML = "Dirección Mac inCorrecta";
                 }
             } catch{
-                inputDireccionMac.nextSibling.style.color = "red";
                 inputDireccionMac.nextSibling.innerHTML = "Dirección Mac gbgbgCorrecta";
             }
         }
 
-        function direccionIp(cadena){
+        function direccionIp(cadena,input){
             try {
-                
-                let expresion = new RegExp("^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$");
+                let expresion = new RegExp("^((25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|[0-9])[.]){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d|[0-9])$");
 
-                let [, numero1, numero2, numero3, numero4] = expresion.exec(cadena);
-
-                // if(numero1<10 && numero1>0 && numero1.includes("0")){
-                //     cadena = cadena.replace(numero,numero.replace("0",""));
-                // }
-
-                if(expresion.test(cadena.trim()) && parseInt(numero1)<256 && parseInt(numero2)<"256" && parseInt(numero3)<"256" && parseInt(numero4)<"256"){
-                    inputDireccionIp.nextSibling.style.color = "black";
-                    inputDireccionIp.nextSibling.innerHTML = "Dirección Ip Correcta";
+                if(expresion.test(cadena)){
+                    inputDireccionIp.nextSibling.innerHTML = "";
                 }else{
-                    inputDireccionIp.nextSibling.style.color = "red";
                     inputDireccionIp.nextSibling.innerHTML = "Dirección Ip No Válida";
                 }
 
             } catch{
-                inputDireccionIp.nextSibling.style.color = "red";
                 inputDireccionIp.nextSibling.innerHTML = "Formato De dirección Ip Erróneo";
             }
         }
-
-        arrayInputs = document.getElementsByTagName("input");
-
         
         inputCapitaliza.addEventListener("blur",function(){
             capitaliza(inputCapitaliza.value);
@@ -291,31 +265,8 @@
         });
 
         inputDireccionIp.addEventListener("blur",function(){
-            direccionIp(inputDireccionIp.value);
+            direccionIp(inputDireccionIp.value,inputDireccionIp);
         });
-
-    //     let i =0;
-    //     for (const input of arrayInputs) {
-
-
-    //         switch (input) {
-    //             case 0:
-    //                 alert("hoa");
-    //                 input.addEventListener("blur",function(){
-    //                     capitaliza(input.value);
-    //                     alert("hoa");
-    //                 });
-                    
-    //                 break;
-            
-    //             default:
-    //                 break;
-    //         }
-
-            
-
-    //         i++;
-    //     }
     }
     document.addEventListener("DOMContentLoaded", inicio);
 }
