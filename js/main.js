@@ -102,11 +102,8 @@
         }
 
         function finaliza (cadenaInicial, cadenaFinal){
-            // let longitudCadenaFinal = cadenaFinal.length;
 
-            let finalDeCadenaInicial = cadenaInicial.slice(cadenaInicial.length-cadenaFinal.length,cadenaInicial.length);
-
-            if(finalDeCadenaInicial == cadenaFinal){
+            if(cadenaInicial.endsWith(cadenaFinal)){
                 inputFinaliza2.nextSibling.innerHTML = "  True";
             }
             else{
@@ -115,11 +112,8 @@
         }
 
         function empieza (cadenaInicial, cadenaFinal){
-            // let longitudCadenaFinal = cadenaFinal.length;
 
-            let inicioDeCadenaInicial = cadenaInicial.slice(0,cadenaFinal.length);
-
-            if(inicioDeCadenaInicial == cadenaFinal){
+            if(cadenaInicial.startsWith(cadenaFinal)){
                 inputEmpieza2.nextSibling.innerHTML = "  True";
             }
             else{
