@@ -195,8 +195,6 @@
         }
 
         function direccionMac(cadena){
-            try {
-                
                 let expresion = new RegExp("^([0-9a-zA-Z]{2}[.:]?){5}[0-9a-zA-Z]{2}$")
 
                 if(expresion.test(cadena)){
@@ -204,9 +202,6 @@
                 }else{
                     inputDireccionMac.nextSibling.innerHTML = "Dirección Mac inCorrecta";
                 }
-            } catch{
-                inputDireccionMac.nextSibling.innerHTML = "Dirección Mac gbgbgCorrecta";
-            }
         }
 
         function direccionIp(cadena,input){
