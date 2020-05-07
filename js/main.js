@@ -31,7 +31,6 @@
             for (let i = 0; i < arrayCadenas.length; i++) {
 
                 letra = arrayCadenas[i].substring(0, 1).toUpperCase();
-                console.log(letra);
                 palabra = letra + arrayCadenas[i].substring(1,arrayCadenas[i].length).toLowerCase();
 
                 cadenaResultado += palabra + " ";
@@ -60,7 +59,6 @@
 
             for (let i = 0; i < arrayPalabras.length; i++) {
                 letra = arrayPalabras[i].substring(0, 1).toUpperCase();
-                console.log(letra);
                 palabra = letra + arrayPalabras[i].substring(1,arrayPalabras[i].length).toLowerCase();
 
                 cadenaFinal += palabra;
@@ -112,9 +110,6 @@
                 let cadenaLetras = "TRWAGMYFPDXBNJZSQVHLCKET";
 
                 let [, dniNumero, dniLetra] = expresion.exec(cadena);
-    
-                console.log(dniNumero);
-                console.log(dniLetra);
 
                 if (expresion.test(cadena) && (dniLetra.toUpperCase() == cadenaLetras[parseInt(dniNumero) % 23])) {
                     inputDni.nextSibling.innerHTML = "";
