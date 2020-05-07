@@ -68,24 +68,8 @@
             inputCamelCase.nextSibling.innerHTML = cadenaFinal;
         }
 
-        // function sinCamelCase(cadena){
-
-        //     let arrayCadenas = cadena.split("A" || "B"|| "C"|| "D"|| "F");
-
-        //     let cadenaFinal = "";
-
-        //     for (let i = 0; i < arrayCadenas.length; i++) {
-                
-        //         cadenaFinal += "," + arrayCadenas[i];
-
-        //     }
-        //     inputSinCamelCase.nextSibling.innerHTML = cadenaFinal;
-
-        // }
-
         function sinCamelCase(cadena){
 
-            let arrayCadenas = cadena.split("A" || "B"|| "C"|| "D"|| "F");
             let cadenaFinal = "";
 
             for (let i = 0; i < cadena.length; i++) {    
