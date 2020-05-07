@@ -111,7 +111,7 @@
 
                 let [, dniNumero, dniLetra] = expresion.exec(cadena);
 
-                if (expresion.test(cadena) && (dniLetra.toUpperCase() == cadenaLetras[parseInt(dniNumero) % 23])) {
+                if (dniLetra.toUpperCase() == cadenaLetras[parseInt(dniNumero) % 23]) {
                     inputDni.nextSibling.innerHTML = "";
                 }
                 else {
