@@ -152,7 +152,7 @@
         function matricula(cadena){
             try {
                 
-                let expresion = new RegExp("^[0-9]{4}[-]?[a-zA-Z]{3}$")
+                let expresion = new RegExp("^[0-9]{4}[- ]?[a-zA-Z]{3}$")
 
                 if(expresion.test(cadena) 
                 && !cadena.includes("ñ") && !cadena.includes("Ñ")
